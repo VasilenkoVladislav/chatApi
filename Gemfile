@@ -45,7 +45,7 @@ gem 'devise_token_auth', '0.1.42'
 gem 'devise-i18n', '1.5.1'
 gem 'omniauth', '1.8.1'
 gem 'omniauth-facebook', '4.0.0'
-gem 'omniauth-vkontakte', '1.4.1'
+gem 'omniauth-twitter', '1.4.0'
 gem 'omniauth-google-oauth2', '0.5.3'
 gem 'cancancan', '2.1.3'
 
