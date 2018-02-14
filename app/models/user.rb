@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   ST_AVATAR = ['', '_medium', '_small']
 
   has_many :identities, dependent: :destroy
+  has_many :conversations, dependent: :destroy
+  has_many :messages, dependent: :destroy
 
   def return_avatar(enum)
     type = ['large', 'medium', 'small']

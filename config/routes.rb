@@ -7,4 +7,14 @@ Rails.application.routes.draw do
       token_validations:  'users/token_validations',
       passwords:          'users/passwords'
   }
+
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      # Conversation & Conversation messages
+      resources :conversations do
+        resources :messages, except: :show
+      end
+    end
+  end
+
 end
