@@ -14,6 +14,10 @@ Rails.application.routes.draw do
       resources :conversations do
         resources :messages, except: :show
       end
+
+      #Search
+      get 'search_users',                                to: 'search#find_users'
+
     end
   end
 

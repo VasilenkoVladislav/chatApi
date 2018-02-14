@@ -1,3 +1,5 @@
 class Conversation < ActiveRecord::Base
-  belongs_to :user
+  has_many :conversation_users, dependent: :destroy
+  has_many :messages, dependent: :destroy
+  has_many :users, through: :conversation_users
 end

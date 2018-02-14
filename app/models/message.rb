@@ -1,4 +1,4 @@
 class Message < ActiveRecord::Base
-  has_one :conversation, dependent: :destroy
-  has_one :user
+  belongs_to :conversation
+  belongs_to :user
 end
