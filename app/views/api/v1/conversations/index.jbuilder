@@ -1,3 +1,8 @@
+json.conversations({})
 json.conversations do
-  json.array! @conversations
+  @conversations.each do |conversation|
+    json.set! conversation.id do
+      json.call(conversation, :id, :name, :created_at, :updated_at)
+    end
+  end
 end
