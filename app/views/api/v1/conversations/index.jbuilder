@@ -1,5 +1,3 @@
 json.conversations do
-  json.array! @conversations do |conversation|
-
-  end
+  json.array! @conversations
 end

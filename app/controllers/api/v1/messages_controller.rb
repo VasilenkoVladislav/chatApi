@@ -1,13 +1,13 @@
 class Api::V1:: MessagesController < BaseController
 
   def index
-    @messages = Message.find_by(conversation_id: params[:conversation_id])
+    @messages = @conversation.messages
     render :index
   end
 
   def create
-    @message = current_user.messages.new(message_params)
-    if @message.save
+    @message = current_user.messages.create(message_params)
+    if @message.persisted?
       render :create
     else
       render json: { errors: @message.errors.full_messages }, status: :unprocessable_entity
