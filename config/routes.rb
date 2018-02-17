@@ -17,7 +17,6 @@ Rails.application.routes.draw do
 
       #Search
       get 'search_users',                                to: 'search#find_users'
-
     end
   end
 

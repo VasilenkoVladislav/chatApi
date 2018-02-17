@@ -20,9 +20,9 @@ class Users::OmniauthCallbacksController < DeviseTokenAuth::OmniauthCallbacksCon
       @resource.save!
 
       yield @resource if block_given?
-      image_medium = @resource.return_avatar 'medium'
-      image_small = @resource.return_avatar 'small'
-      @resource.image = @resource.return_avatar 'large'
+      image_medium = @resource.get_avatar 'medium'
+      image_small = @resource.get_avatar 'small'
+      @resource.image = @resource.get_avatar 'large'
       render_data_or_redirect('deliverCredentials', @auth_params.as_json, @resource.as_json.merge(image_medium: image_medium, image_small: image_small))
       #Elastic servise update data
       User.find_by(id: @resource.id).reindex(:search_data)

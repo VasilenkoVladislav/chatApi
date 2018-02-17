@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   has_many :conversations, through: :conversation_users
   has_many :messages, dependent: :destroy
 
-  def return_avatar(enum)
+  def get_avatar(enum)
     type = ['large', 'medium', 'small']
     if self.image && self.image.include?('facebook')
       self.image + FACEBOOK_AVATAR[type.index(enum)]
