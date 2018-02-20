@@ -4,7 +4,6 @@ class CreateUserIdentities < ActiveRecord::Migration[5.1]
       t.references :user, type: :uuid, index: true, foreign_key: { on_delete: :cascade }
       t.string :provider
       t.string :uid
-      t.string :registration_platform
 
       t.timestamps
     end

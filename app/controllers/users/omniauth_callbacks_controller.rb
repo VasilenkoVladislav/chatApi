@@ -34,9 +34,7 @@ class Users::OmniauthCallbacksController < DeviseTokenAuth::OmniauthCallbacksCon
   def get_resource_from_auth_hash
     @resource = resource_class.where(email: auth_hash[:info][:email]).first_or_initialize
 
-    identity = Identity.where(uid: auth_hash['uid'],
-                              provider: auth_hash['provider'],
-                              registration_platform: request.host).first_or_initialize
+    identity = Identity.where(uid: auth_hash['uid'], provider: auth_hash['provider']).first_or_initialize
 
     @resource.identities << identity if identity.new_record?
     @resource.uid = identity.uid

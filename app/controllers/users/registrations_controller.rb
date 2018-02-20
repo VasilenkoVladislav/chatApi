@@ -4,8 +4,7 @@ class Users::RegistrationsController < DeviseTokenAuth::RegistrationsController
     @resource            = resource_class.new(sign_up_params)
     @resource.provider   = 'email'
 
-    identity = Identity.where(uid: params[:email], provider: 'email', registration_platform: request.host)
-                       .first_or_initialize
+    identity = Identity.where(uid: params[:email], provider: 'email').first_or_initialize
 
     @resource.identities << identity
 
