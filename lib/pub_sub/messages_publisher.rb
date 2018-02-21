@@ -3,7 +3,7 @@ module PubSub
 
     def publish(data, client_id)
       message = message_builder(data[:message], data[:action])
-      redis.publish(data[:message].conversation_id, message)
+      redis.publish("#{data[:message].conversation_id}?#{client_id}", message)
     end
 
     private
