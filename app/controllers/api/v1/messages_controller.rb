@@ -43,7 +43,7 @@ class Api::V1:: MessagesController < BaseController
   end
 
   def create_message_params
-    params.require(:message).permit(:content, :conversation_id)
+    params.require(:message).permit(:content).merge(conversation_id: params[:conversation_id])
   end
 
   def update_message_params
@@ -54,7 +54,7 @@ class Api::V1:: MessagesController < BaseController
     if params[:id]
       @message = Message.find_by(id: params[:id])
     end
-    head (:not_found) unless @conversation
+    head (:not_found) unless @message
   end
 
   def find_conversation
