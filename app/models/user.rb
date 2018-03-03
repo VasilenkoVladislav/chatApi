@@ -14,6 +14,12 @@ class User < ActiveRecord::Base
   has_many :conversations, through: :conversation_users
   has_many :messages, dependent: :destroy
 
+  def get_common_conversation_ids(user)
+    current_user_conversation = self.conversation_users.pluck(:conversation_id)
+    user_conversations = user.conversation_users.pluck(:conversation_id)
+    user_conversations & current_user_conversation
+  end
+
   def get_avatar(enum)
     type = ['large', 'medium', 'small']
     if self.image && self.image.include?('facebook')
